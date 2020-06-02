@@ -8,17 +8,33 @@
 
 import express from "express";
 import path from "path";
+//import {runInNewContext} from "vm";
 
 const {APP_PORT} = process.env;
 
 const app = express();
+const bodyparser = require("body-parser");
+const mongoose = require("mongoose");
+const passport = require("passport");
+const users = require("./routes/api/users");
 
 app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
-app.get("/hello", (req, res) => {
-    console.log(`ℹ️  (${req.method.toUpperCase()}) ${req.url}`);
-    res.send("Hello, World!");
-});
+app.use(bodyparser.urlencoded({extended: false}));
+app.use(bodyparser.json());
+// DB Config
+const db = require("./config/keys").mongoURI;
+// Connect to MongoDB
+mongoose
+    .connect(db, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => console.log("MongoDB successfully connected"))
+    .catch(err => console.log(err));
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./passport")(passport);
+// Routes
+app.use("/api/users", users);
 
 app.listen(APP_PORT, () =>
     console.log(`🚀 Server is listening on port ${APP_PORT}.`),
