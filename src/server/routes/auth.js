@@ -1,29 +1,21 @@
 import User from "../models/User";
-
+import { loginValidation, registerValidation } from "../validations";
 const router = require("express").Router();
-
-
-// validation 
-import Joi from "@hapi/joi"; //pour validation easy
-const schema = Joi.object({
-    name: Joi.string().min(6).required(),
-    email: Joi.string().min(6).required().email(),
-    password: Joi.string().min(6).required(),
-
-});
-
-
-
 
 // reviens a la même chose que faire app.get/post/delete/find
 // juste une question de contexte
 // defini le comment interagir avec l'API quand on realise la requete http
 router.post("/register", async (req, res) => {
     //retourner l'erreur
-    const { error } = schema.validate(req.body);
+    const { error } = registerValidation(req.body);
     //si erreor retourne nous l'erreur
     if (error) return res.status(400).send(error.details[0].message);
     // const validation = Joi.validate(req.body, schema);
+
+    //check si l'utilisateur est deja dans la data base
+    const emailExist = await User.findOne({ email: req.body.email });
+    if (emailExist) return res.status(400).send('Email already exists');
+
 
     //sinon cree un nouvel user
     const user = new User({
