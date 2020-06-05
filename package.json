@@ -44,6 +44,7 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "mongoose": "^5.9.17",
