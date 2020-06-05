@@ -9,10 +9,18 @@
 import express from "express";
 import path from "path";
 
-const {APP_PORT} = process.env;
-
 const app = express();
 
+//importer les routes
+const authRoute = require("./routes/auth");
+//route middleware
+//Middleware provide a convenient mechanism for filtering
+//HTTP requests entering your application
+app.use("/api/users", authRoute);
+// process.env.port is Heroku's port if you choose to deploy the app there
+const {APP_PORT} = process.env || 12345;
+
+// la ligne pas touche sinon client dead
 app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
 app.get("/hello", (req, res) => {

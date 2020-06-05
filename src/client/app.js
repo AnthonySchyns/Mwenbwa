@@ -6,9 +6,26 @@
  * started at 18/05/2020
  */
 
-import * as React from "react";
+//import * as React from "react";
+//import ReactDOM from "react-dom";
+import React from "react";
 import ReactDOM from "react-dom";
+//import "app.css";
+import RootComponent from "./components/root";
 
-import HelloWorld from "./components/hello";
+// function App() {
+//     return (
+//         <div className="app">
+//             <Pause />
+//         </div>
+//     );
+// }
 
-ReactDOM.render(<HelloWorld />, document.querySelector("#app"));
+// export default App;
+
+ReactDOM.render(
+    <div>
+        <RootComponent />
+    </div>,
+    document.querySelector("#app"),
+);
