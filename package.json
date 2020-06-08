@@ -46,6 +46,7 @@
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "mongoose": "^5.9.17",
     "react": "^16.13.1",
