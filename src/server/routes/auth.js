@@ -1,7 +1,10 @@
 import User from "../models/User";
 import { loginValidation, registerValidation } from "../validations";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 const router = require("express").Router();
+
+// const TOKEN_SECRET = require("./config/keys").TOKEN_SECRET;
 
 // reviens a la même chose que faire app.get/post/delete/find
 // juste une question de contexte
@@ -32,10 +35,11 @@ router.post("/register", async (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: hashedPassword,
+        password2: hashedPassword,
     });
     try {
         const savedUser = await user.save();
-        res.send(savedUser);    //{ user: user.id }
+        res.send(savedUser); //{ user: user.id }
     } catch (err) {
         res.status(400).send(err);
     }
@@ -57,7 +61,10 @@ router.post("/login", async (req, res) => {
     const validPass = await bcrypt.compare(req.body.password, user.password);
     if (!validPass) return res.status(400).send("invalid password");
 
-    res.send("logged in!");
+    // creer et assigner un token (prouve que l'utilisateur est loggé pour future post)
+    const token = jwt.sign({ _id: user._id });
+    res.header("auth-token", token).send(token);
+    //res.send("logged in!");
 });
 
 module.exports = router;
