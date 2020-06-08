@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Register = () => {
@@ -35,7 +35,7 @@ const Register = () => {
         };
         //requete axios afin d'envoyer un post a l'api via la route predefinie
         axios({
-            url: "http://localhost/api/users/register",
+            url: "/api/users/register",
             method: "POST",
             data: payload,
         })
@@ -108,7 +108,7 @@ const Register = () => {
                             placeholder={"Email"}
                             //set la value a chaque changement de l'input
                             onChange={e => setEmail(e.target.value)}
-                            // onKeyPress={e => handleKeyPress(e)}
+                        // onKeyPress={e => handleKeyPress(e)}
                         />
                         <input
                             //error={error}
@@ -117,7 +117,7 @@ const Register = () => {
                             label={"name"}
                             placeholder={"name"}
                             onChange={e => setName(e.target.value)}
-                            // onKeyPress={e => handleKeyPress(e)}
+                        // onKeyPress={e => handleKeyPress(e)}
                         />
                         <input
                             //error={error}
@@ -126,7 +126,7 @@ const Register = () => {
                             label={"Password"}
                             placeholder={"Password"}
                             onChange={e => setPassword(e.target.value)}
-                            // onKeyPress={e => handleKeyPress(e)}
+                        // onKeyPress={e => handleKeyPress(e)}
                         />
                         <input
                             //error={error}
@@ -135,7 +135,7 @@ const Register = () => {
                             label={"Password2"}
                             placeholder={"Password2"}
                             onChange={e => setPassword2(e.target.value)}
-                            // onKeyPress={e => handleKeyPress(e)}
+                        // onKeyPress={e => handleKeyPress(e)}
                         />
                     </div>
 
