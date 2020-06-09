@@ -10,6 +10,7 @@
 import express from "express";
 import path from "path";
 import mongoose from "mongoose";
+const postRoute = require("./routes/post");
 // importer la clef de connection au cluster mongoose
 const db = require("./config/keys").mongoURI;
 const app = express();
@@ -22,6 +23,7 @@ const authRoute = require("./routes/auth");
 app.use(express.json());
 
 app.use("/api/users", authRoute);
+app.use("/api/posts", postRoute);
 // process.env.port is Heroku's port if you choose to deploy the app there
 const { APP_PORT } = process.env || 12345;
 

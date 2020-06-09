@@ -2,6 +2,7 @@ import User from "../models/User";
 import { loginValidation, registerValidation } from "../validations";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import keys from "../config/keys";
 const router = require("express").Router();
 
 // const TOKEN_SECRET = require("./config/keys").TOKEN_SECRET;
@@ -62,9 +63,27 @@ router.post("/login", async (req, res) => {
     const validPass = await bcrypt.compare(req.body.password, user.password);
     if (!validPass) return res.status(400).send("invalid password");
 
-    // creer et assigner un token (prouve que l'utilisateur est loggé pour future post)
-    const token = jwt.sign({ _id: user._id });
-    res.header("auth-token", token).send(token);
+    // // creer et assigner un token (prouve que l'utilisateur est loggé pour future post)
+    // User matched
+    // Create JWT Payload
+    const payload = {
+        id: user.id,
+        name: user.name,
+    };
+    // Sign token
+    jwt.sign(
+        payload,
+        keys.secretOrKey,
+        {
+            expiresIn: 31556926, // 1 year in seconds
+        },
+        (err, token) => {
+            res.json({
+                success: true,
+                token: "Bearer " + token,
+            });
+        },
+    );
     //res.send("logged in!");
 });
 
