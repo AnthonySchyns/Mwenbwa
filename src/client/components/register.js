@@ -46,6 +46,7 @@ const Register = () => {
                 console.log(err);
                 console.log(payload);
             });
+
     };
     // test axios #succes1
     // axios.post('http://localhost/api/users/register', {

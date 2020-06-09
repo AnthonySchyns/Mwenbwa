@@ -1,32 +1,49 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
+import axios from "axios";
 const Login = () => {
     // initialiser les states afin de pouvoir les gerer
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-    const [helperText, setHelperText] = useState("");
-    const [error, setError] = useState("false");
+    //const [helperText, setHelperText] = useState("");
+    //const [error, setError] = useState("false");
 
     //regarder si les champs sont vide afin d'activer le button
     useEffect(() => {
-        if (username.trim() && password.trim()) {
+        if (email.trim() && password.trim()) {
             setIsButtonDisabled(false);
         } else {
             setIsButtonDisabled(true);
         }
-    }, [username, password]);
+    }, [email, password]);
 
     //lui dire quoi faire une fois le button appuyé
     //a update juste phase de test
     const handleLogin = () => {
-        if (username === "abc@email.com" && password === "password") {
-            setError("false");
-            setHelperText("Login Successfully");
-        } else {
-            setError("true");
-            setHelperText("Incorrect username or password");
-        }
+        // if (email === "abc@email.com" && password === "password") {
+        //     setError("false");
+        //     setHelperText("Login Successfully");
+        // } else {
+        //     setError("true");
+        //     setHelperText("Incorrect email or password");
+        // }
+        const payload = {
+            email,
+            password,
+        };
+        axios({
+            url: "/api/users/login",
+            method: "POST",
+            data: payload,
+        })
+            .then(() => {
+                console.log("succes");
+            })
+            .catch(err => {
+                console.log(err);
+                console.log(payload);
+            });
     };
 
     // const handleKeyPress = (e: any) => {
@@ -43,22 +60,22 @@ const Login = () => {
                     {/* <CardContent> */}
                     <div>
                         <input
-                            error={error}
-                            id={"username"}
+                            //error={error}
+                            id={"email"}
                             type={"email"}
-                            label={"Username"}
-                            placeholder={"Username"}
-                            onChange={e => setUsername(e.target.value)}
-                            // onKeyPress={e => handleKeyPress(e)}
+                            label={"email"}
+                            placeholder={"email"}
+                            onChange={e => setEmail(e.target.value)}
+                        // onKeyPress={e => handleKeyPress(e)}
                         />
                         <input
-                            error={error}
+                            //error={error}
                             id={"password"}
                             type={"password"}
                             label={"Password"}
                             placeholder={"Password"}
                             onChange={e => setPassword(e.target.value)}
-                            // onKeyPress={e => handleKeyPress(e)}
+                        // onKeyPress={e => handleKeyPress(e)}
                         />
                     </div>
 
