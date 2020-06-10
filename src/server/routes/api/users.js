@@ -23,7 +23,6 @@ router.post("/register", (req, res) => {
             name: req.body.name,
             email: req.body.email,
             password: req.body.password,
-            token: "",
         });
         // Hash password before saving in database
         return bcrypt.genSalt(10, (err, salt) => {
@@ -71,10 +70,11 @@ router.post("/login", (req, res) => {
                     {
                         expiresIn: 31556926, // 1 year in seconds
                     },
-                    (err, token) => {
+                    async (err, tokene) => {
+                        await User.updateOne({email}, {token: tokene});
                         res.json({
                             success: true,
-                            token: `Bearer ${token}`,
+                            token: `Bearer ${tokene}`,
                         });
                     },
                 );

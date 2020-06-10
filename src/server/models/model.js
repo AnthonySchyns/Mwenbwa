@@ -15,7 +15,6 @@ const UserSchema = new Schema({
     },
     token: {
         type: String,
-        required: true,
     },
     date: {
         type: Date,

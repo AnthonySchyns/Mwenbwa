@@ -9,8 +9,8 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
 import Map from "./components/world";
-import SimpleExample from "./components/test";
+import Leaflet from "./components/test";
 
 import "./style.scss";
-ReactDOM.render(<SimpleExample />, document.querySelector("#app"));
+ReactDOM.render(<Leaflet />, document.querySelector("#app"));
 //ReactDOM.render(<Map />, document.querySelector("#app"));
