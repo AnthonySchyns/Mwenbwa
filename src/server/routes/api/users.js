@@ -72,7 +72,6 @@ router.post("/login", (req, res) => {
                         expiresIn: 31556926, // 1 year in seconds
                     },
                     (err, token) => {
-                        User.updateOne({email}, {token: token});
                         res.json({
                             success: true,
                             token: `Bearer ${token}`,
