@@ -3,6 +3,10 @@
 import React from "react";
 import Login from "../components/login";
 import Register from "../components/register";
+
+
+
+
 function RootComponent() {
     return (
         <div className={"App"}>

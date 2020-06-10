@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from "react";
 
 import axios from "axios";
+const jwt = require("jsonwebtoken");
 const Login = () => {
+    //const token = req.header("auth-token");
     // initialiser les states afin de pouvoir les gerer
     const [email, setEmail] = useState("");
+
+    //s const [islogged, setIslogged] = useState("");
     const [password, setPassword] = useState("");
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     //const [helperText, setHelperText] = useState("");
     //const [error, setError] = useState("false");
-
-    //regarder si les champs sont vide afin d'activer le button
+    // useEffect(
+    //     () => {
+    //         if (!token) {
+    //             setIslogged(true);
+    //         }
+    //     },
+    //ccregarder si les champs sont vide afin d'activer le button
     useEffect(() => {
         if (email.trim() && password.trim()) {
             setIsButtonDisabled(false);
@@ -85,7 +94,6 @@ const Login = () => {
                         onClick={() => handleLogin()}
                         disabled={isButtonDisabled}
                     />
-                    {helperText}
                 </div>
             </form>
         </React.Fragment>
