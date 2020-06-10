@@ -52,7 +52,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.17",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0"
   },
   "husky": {
     "hooks": {

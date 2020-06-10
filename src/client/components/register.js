@@ -8,8 +8,8 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-    //const [helperText, setHelperText] = useState("");
-    // const [error, setError] = useState("false");
+    const [helperText, setHelperText] = useState("");
+    const [error, setError] = useState("false");
 
     //regarder si les champs sont vide afin d'activer le button
     useEffect(() => {
@@ -39,14 +39,16 @@ const Register = () => {
             method: "POST",
             data: payload,
         })
-            .then(() => {
+            .then(response => {
                 console.log("data added");
             })
             .catch(err => {
-                console.log(err);
+                console.log(err.response.data);
                 console.log(payload);
-            });
 
+                setError(true);
+                setHelperText(err.response.data);
+            });
     };
     // test axios #succes1
     // axios.post('http://localhost/api/users/register', {
@@ -100,6 +102,7 @@ const Register = () => {
                 <div className={"class-div"}>
                     {/* <div className={classes.header} title="Login App" /> */}
                     {/* <CardContent> */}
+                    {error ? <div>{helperText} </div> : " "}
                     <div>
                         <input
                             //error={error}
