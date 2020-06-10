@@ -17,6 +17,7 @@ const bodyparser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const users = require("./routes/api/users");
+const tree = require("./routes/api/tree");
 
 app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
@@ -28,13 +29,14 @@ const db = require("./config/keys").mongoURI;
 mongoose
     .connect(db, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log("MongoDB successfully connected"))
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 // Passport middleware
 app.use(passport.initialize());
 // Passport config
 require("./passport")(passport);
 // Routes
 app.use("/api/users", users);
+app.use("/api/tree", tree);
 
 app.listen(APP_PORT, () =>
     console.log(`🚀 Server is listening on port ${APP_PORT}.`),

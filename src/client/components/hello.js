@@ -8,10 +8,11 @@
 
 import * as React from "react";
 
-const HelloWorld = () => (
-    <div>
-        <h1>{"HelloWorld"}</h1>
-    </div>
+const Login = () => (
+    <form method="POST">
+        <input name="email" />
+        <input name="password" />
+    </form>
 );
 
-export default HelloWorld;
+export default Login;

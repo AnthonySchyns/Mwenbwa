@@ -15,7 +15,7 @@ router.post("/register", (req, res) => {
     if (!isValid) {
         return res.status(400).json(errors);
     }
-    return User.findOne({email: req.body.email}).then(user => {
+    return User.findOne({email: req.body.email}).then((user) => {
         if (user) {
             return res.status(400).json({email: "Email already exists"});
         }
@@ -23,6 +23,7 @@ router.post("/register", (req, res) => {
             name: req.body.name,
             email: req.body.email,
             password: req.body.password,
+            token: "",
         });
         // Hash password before saving in database
         return bcrypt.genSalt(10, (err, salt) => {
@@ -33,8 +34,8 @@ router.post("/register", (req, res) => {
                 newUser.password = hash;
                 newUser
                     .save()
-                    .then(user1 => res.json(user1))
-                    .catch(err2 => console.log(err2));
+                    .then((user1) => res.json(user1))
+                    .catch((err2) => console.log(err2));
             });
         });
     });
@@ -49,13 +50,13 @@ router.post("/login", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     // Find user by email
-    return User.findOne({email}).then(user => {
+    return User.findOne({email}).then((user) => {
         // Check if user exists
         if (!user) {
             return res.status(404).json({emailnotfound: "Email not found"});
         }
         // Check password
-        return bcrypt.compare(password, user.password).then(isMatch => {
+        return bcrypt.compare(password, user.password).then((isMatch) => {
             if (isMatch) {
                 // User matched
                 // Create JWT Payload
@@ -71,6 +72,7 @@ router.post("/login", (req, res) => {
                         expiresIn: 31556926, // 1 year in seconds
                     },
                     (err, token) => {
+                        User.updateOne({email}, {token: token});
                         res.json({
                             success: true,
                             token: `Bearer ${token}`,
