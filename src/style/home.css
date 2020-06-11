@@ -1,5 +1,9 @@
 body {
   margin: 0;
+  background: #0C2116;
+  background-image: url(./img/background.png);
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 body .container {
@@ -12,7 +16,6 @@ body .container {
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
-  background: #0C2116;
 }
 
 body .container h1 {
@@ -22,7 +25,7 @@ body .container h1 {
   font-family: Gochi Hand;
   font-style: normal;
   font-weight: normal;
-  font-size: 120px;
+  font-size: 160px;
   line-height: 70px;
   /* identical to box height */
   display: block;
@@ -53,7 +56,17 @@ body .container .buttons a {
   line-height: 44px;
 }
 
-body .container .buttons .right-button {
+body .container .buttons .login-register {
+  padding: 15px;
+  width: 40%;
+  background: #1C4A32;
+  -webkit-box-shadow: #0C2116;
+          box-shadow: #0C2116;
+  border-radius: 25px;
+  color: #E3E4E4;
+}
+
+body .container .buttons .login-register:hover {
   width: 40%;
   padding: 15px;
   background: #65CCB8;
@@ -61,15 +74,5 @@ body .container .buttons .right-button {
           box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
   border-radius: 25px;
   color: #0C2116;
-}
-
-body .container .buttons .left-button {
-  padding: 15px;
-  width: 40%;
-  background: #1C4A32;
-  -webkit-box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
-          box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
-  border-radius: 25px;
-  color: #E3E4E4;
 }
 /*# sourceMappingURL=home.css.map */

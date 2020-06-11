@@ -1,5 +1,20 @@
+//colors
+$white-color: #E3E4E4;
+$bright-color: #65CCB8;
+$dark-color: #1C4A32;
+$darker-color: #0C2116;
+
+//shadow
+$dark-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
+
+
 body{
     margin: 0;
+    background: $darker-color;
+    background-image: url(./img/background.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+
     .container{
         width: 100%;
         height: 100vh;
@@ -12,7 +27,7 @@ body{
             font-family: Gochi Hand;
             font-style: normal;
             font-weight: normal;
-            font-size: 120px;
+            font-size: 160px;
             line-height: 70px;
             /* identical to box height */
 
@@ -41,25 +56,25 @@ body{
 
             }
 
-            .right-button{
-                width: 40%;
-                padding: 15px;
-                background: #65CCB8;
-                box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
-                border-radius: 25px;
-
-            color: #0C2116;
-            }
-            .left-button{
+            .login-register{
 
                 padding: 15px;
                 width: 40%;
-                background: #1C4A32;
-                box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
+                background: $dark-color;
+                box-shadow: $darker-color;
                 border-radius: 25px;
-                color: #E3E4E4;
+                color: $white-color;
             }
+            .login-register:hover{
+                width: 40%;
+                padding: 15px;
+                background: $bright-color;
+                box-shadow: $dark-shadow;
+                border-radius: 25px;
+                color: $darker-color;
+            }
+
         }
-        background: #0C2116;
+        
     }
 }

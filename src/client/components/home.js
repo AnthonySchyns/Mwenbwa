@@ -3,12 +3,12 @@ import {Link} from "react-router-dom";
 
 const Home = () => (
     <div className={"container"}>
-        <h1>{"Mwenba !"}</h1>
+        <h1>{"Mwenbwa !"}</h1>
         <div className={"buttons"}>
-            <Link className={"right-button"} to={"/register"}>
+            <Link className={"login-register"} to={"/register"}>
                 {"Register"}
             </Link>
-            <Link className={"left-button"} to={"/login"}>
+            <Link className={"login-register"} to={"/login"}>
                 {"Login"}
             </Link>
         </div>
