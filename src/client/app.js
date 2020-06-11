@@ -12,6 +12,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 //import "app.css";
 import RootComponent from "./components/root";
+import "../style/home.css";
 
 // function App() {
 //     return (

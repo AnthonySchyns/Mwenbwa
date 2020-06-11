@@ -1,16 +1,17 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const Home = () => (
-    <div>
-        <h1>{"Welcome to Mwenba!"}</h1>
-        <hr />
-        <Link to="/register">
-            <button>{"Register"}</button>
-        </Link>
-        <Link to="/login">
-            <button to="/login">{"Login"}</button>
-        </Link>
+    <div className={"container"}>
+        <h1>{"Mwenba !"}</h1>
+        <div className={"buttons"}>
+            <Link className={"right-button"} to={"/register"}>
+                {"Register"}
+            </Link>
+            <Link className={"left-button"} to={"/login"}>
+                {"Login"}
+            </Link>
+        </div>
     </div>
 );
 

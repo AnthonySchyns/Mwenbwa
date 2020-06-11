@@ -9,7 +9,7 @@
 /* eslint-disable */
 
 const webpack = require("webpack");
-const {resolve} = require("path");
+const { resolve } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = env => {
@@ -103,11 +103,20 @@ module.exports = env => {
                         },
                     ],
                 },
+                {
+                    test: /.scss$/,
+                    use: ["style-loader", "css-loader", "sass-loader"],
+                },
+                {
+                    test: /.css$/i,
+                    use: ["style-loader", "css-loader"],
+                },
             ],
+
         },
         plugins,
         optimization,
-        performance: {hints: false},
+        performance: { hints: false },
         output: {
             path: resolve(__dirname, "./bin/client"),
             filename: env === "dev" ? "js/bundle.js" : "js/[chunkhash].js",
