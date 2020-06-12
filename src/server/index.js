@@ -15,7 +15,7 @@ const {APP_PORT} = process.env;
 const app = express();
 const bodyparser = require("body-parser");
 const mongoose = require("mongoose");
-const passport = require("passport");
+const passport = require("./config/passport");
 const users = require("./routes/api/users");
 const tree = require("./routes/api/tree");
 
