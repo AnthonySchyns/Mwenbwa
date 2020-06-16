@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACI,IADA,CACA,eAAe,CAAA;EACX,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,QAAQ;EACnB,KAAK,EAAE,IAAI;CACd",
+    "sources": [
+        "game.scss"
+    ],
+    "names": [],
+    "file": "game.css"
+}

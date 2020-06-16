@@ -13,7 +13,8 @@ import ReactDOM from "react-dom";
 //import "app.css";
 import RootComponent from "./components/root";
 import "../style/home.css";
-
+import "../style/style.css";
+import "../style/game.css";
 // function App() {
 //     return (
 //         <div className="app">
@@ -30,3 +31,5 @@ ReactDOM.render(
     </div>,
     document.querySelector("#app"),
 );
+
+//ReactDOM.render(<Map />, document.querySelector("#app"));

@@ -26,6 +26,10 @@ app.use("/api/users", authRoute);
 app.use("/api/posts", postRoute);
 // process.env.port is Heroku's port if you choose to deploy the app there
 const { APP_PORT } = process.env || 12345;
+const bodyparser = require("body-parser");
+//const passport = require("./config/passport");
+const users = require("./routes/api/users");
+const tree = require("./routes/api/tree");
 
 // la ligne pas touche sinon client dead
 app.use(express.static(path.resolve(__dirname, "../../bin/client")));
@@ -41,6 +45,19 @@ app.get("/hello", (req, res) => {
     console.log(`ℹ️  (${req.method.toUpperCase()}) ${req.url}`);
     res.send("Hello, World!");
 });
+app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.json());
+// // DB Config
+// const db = require("./config/keys").mongoURI;
+// Connect to MongoDB
+
+// Passport middleware
+//app.use(passport.initialize());
+// Passport config
+//require("./passport")(passport);
+// Routes
+app.use("/api/users", users);
+app.use("/api/tree", tree);
 
 app.listen(APP_PORT, () =>
     console.log(`🚀 Server is listening on port ${APP_PORT}.`),

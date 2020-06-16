@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Home = () => (
     <div className={"container"}>
@@ -10,6 +10,9 @@ const Home = () => (
             </Link>
             <Link className={"left-button"} to={"/login"}>
                 {"Login"}
+            </Link>
+            <Link className={"left-button"} to={"/game"}>
+                {"map"}
             </Link>
         </div>
     </div>
