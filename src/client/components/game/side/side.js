@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Leaderboard from "./leaderboard";
 import Gamelog from "./gamelog";
 import Historic from "./historic";
@@ -20,16 +20,19 @@ function Side() {
         <div className={"side-container"}>
             <div className={"side-nav"}>
                 <input
+                    type={"button"}
                     className={"side-btn gamelog"}
                     value={"G"}
                     onClick={() => setSide("gamelog")}
                 />
                 <input
+                    type={"button"}
                     className={"side-btn leaderboard"}
                     value={"L"}
                     onClick={() => setSide("leaderboard")}
                 />
                 <input
+                    type={"button"}
                     className={"side-btn historic"}
                     value={"H"}
                     onClick={() => setSide("historic")}

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import Leaflet from "../map";
-import Menu from "../menu";
-import Side from "../side/side";
+import Menu from "./menu";
+import Side from "./side/side";
 import axios from "axios";
 // import express from "express";
 
@@ -15,7 +15,7 @@ function Game() {
                 console.log(email);
                 setUserdata(email);
             })
-            .catch((err) => {
+            .catch(err => {
                 console.log(err);
             });
     }, [setUserdata]);

@@ -7,12 +7,16 @@ function Menu(props) {
     return (
         <div className={"menu-container"}>
             <div className={"menu-element"}>
-                <div className={"menu-element-item"}>{<p>{props.userdata}</p>}</div>
-                <div className={"menu-element-item"}>{<p>{props.userdata}</p>}</div>
+                <div className={"menu-element-item"}>
+                    {<p>{props.userdata}</p>}
+                </div>
+                <div className={"menu-element-item"}>
+                    {<p>{props.userdata}</p>}
+                </div>
             </div>
             <Clock
-                className="clock"
-                format="HH:mm"
+                className={"clock"}
+                format={"HH:mm"}
                 interval={1000}
                 ticking={true}
             />

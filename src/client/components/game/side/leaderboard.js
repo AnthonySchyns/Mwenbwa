@@ -1,9 +1,8 @@
 import React from "react";
-function Gamelog() {
-
+function Leaderboard() {
     return (
         <div className={"gamelog-container"}>
-            <h3>{"Gamelog"}</h3>
+            <h3>{"Leaderboard"}</h3>
             <div className={"log-container"}>
                 <p>{"ipsumef loren"}</p>
                 <hr />
@@ -11,4 +10,4 @@ function Gamelog() {
         </div>
     );
 }
-export default Gamelog;
+export default Leaderboard;
