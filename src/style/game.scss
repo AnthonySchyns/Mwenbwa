@@ -1,13 +1,50 @@
 body{
+    background:  #0C2116;
     .flex-container{
         display: flex;
         flex-flow: row wrap;
         width: 100%;
     }
-    // .side-container{
-    //     width: 30%;
-    // }
-    // .map-container{
-    //     width: 69%;
-    // }
+    .side-container{
+        width: 22vw;
+        display: block;
+        margin: auto;
+        margin-top: 0;
+        color: white;
+        .side-nav{
+            .side-btn{
+                background: #2A4236;
+                border-radius: 10px;
+                color: #65CCB8;
+            }
+        }
+    }
+    .map-container{
+        width: 75vw;
+    }
+}
+.menu-container{
+    display:inline-flex;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    flex-flow: row wrap;
+    width: 100%;
+    background-color: #0C2116;
+    font-size: 15px;
+    border-bottom: 2px solid #65CCB8;
+    color: white;
+    justify-content: space-between;
+    .clock{
+
+        font-size: 20px;
+            margin:1rem;
+    }
+    .menu-element{
+        display: flex;
+        flex-flow: row wrap;
+        p{
+            margin:1rem;
+        }
+    }
 }

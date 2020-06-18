@@ -11,6 +11,28 @@ const router = require("express").Router();
 // juste une question de contexte
 // defini le comment interagir avec l'API quand on realise la requete http
 
+// router.get("/", (req, res) => {
+//     res.json({
+//         posts: {
+//             title: "a post secret",
+//             description: "random data you shouldnt access",
+//         },
+//     });
+// });
+
+module.exports = router;
+router.get("/user", (req, res) => {
+    User.findOne({
+        _id: "5ee08c18c6c1e90011f6c474",
+    })
+        .then(data => {
+            console.log("Data: ", data);
+            res.json(data);
+        })
+        .catch(error => {
+            console.log("error: ", error);
+        });
+});
 router.post("/register", async (req, res) => {
     //retourner l'erreur
     const { error } = registerValidation(req.body);
@@ -38,6 +60,8 @@ router.post("/register", async (req, res) => {
         email: req.body.email,
         password: hashedPassword,
         password2: hashedPassword,
+        leaf: 50,
+        tree: 3,
     });
     try {
         const savedUser = await user.save();

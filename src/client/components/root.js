@@ -6,7 +6,7 @@ import Login from "../components/login";
 import Register from "../components/register";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //import Map from "../components/world"tr
-import Game from "./game";
+import Game from "./game/game";
 //import Leaflet from "./map";
 
 function RootComponent() {
