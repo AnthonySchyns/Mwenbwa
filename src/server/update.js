@@ -8,8 +8,7 @@ mongoose
 Tree.find()
     .then((trees) => {
         for (let i = 0; i < trees.length; i++) {
-            trees[i].leaves = trees[i].diametre_cime * trees[i].hauteur_totale;
-            trees[i].leaves = Math.floor(trees[i].leaves);
+            trees[i].owner = "";
             trees[i].save((err, doc) => {
                 if (err) return console.error(err);
                 return console.log(trees[i].leaves);

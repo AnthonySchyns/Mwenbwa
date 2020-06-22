@@ -26,6 +26,9 @@ const TreeSchema = new Schema({
     leaves: {
         type: Number,
     },
+    owner: {
+        type: String,
+    },
 });
 const Tree = mongoose.model("trees", TreeSchema);
 module.exports = Tree;

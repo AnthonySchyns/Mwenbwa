@@ -7,7 +7,7 @@ router.get("/get", (req, res) => {
         .then((trees) => {
             let geoloc = [];
             for (let i = 0; i < 100; i++) {
-                geoloc.push(trees[i].geoloc);
+                geoloc.push(trees[i]);
             }
             res.send(geoloc);
         })
@@ -15,4 +15,12 @@ router.get("/get", (req, res) => {
             res.send(err);
         });
 });
+router.post("/price", (req, res) => {
+    const price = req.body.around;
+    const sum = price.reduce((acc, val) => {
+        return acc + val.leaves;
+    });
+    res.send(sum);
+});
+
 module.exports = router;
